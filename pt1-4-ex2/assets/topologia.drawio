@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="OpenCode" version="24.7.17" type="device">
+  <diagram id="topologia-pt1-4-ex2" name="Topologia">
+    <mxGraphModel dx="1800" dy="1200" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0" background="#F6F7F9">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Títol -->
+        <mxCell id="title" value="Topologia de xarxa · VPC + 6 instànces EC2" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="60" y="24" width="1680" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value "VPC 10.0.0.0/16 · 3 subxarxes · us-east-1a · 6 EC2 t3.micro" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=17;fontColor=#5A6B7B;" vertex="1" parent="1">
+          <mxGeometry x="60" y="66" width="1680" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- VPC -->
+        <mxCell id="vpc" value="VPC pt1-4-ex2  ·  10.0.0.0/16" style="rounded=1;arcSize=2;whiteSpace=wrap;html=0;fillColor=#FBFDF8;strokeColor=#248814;strokeWidth=3;align=left;verticalAlign=top;spacingTop=8;spacingLeft=16;fontSize=19;fontStyle=1;fontColor=#248814;" vertex="1" parent="1">
+          <mxGeometry x="115" y="120" width="1570" height="960" as="geometry" />
+        </mxCell>
+
+        <!-- Internet -->
+        <mxCell id="internet" value="Internet" style="shape=cloud;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#B8C2CC;strokeWidth=2;fontSize=17;fontStyle=1;fontColor=#232F3E;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Internet Gateway -->
+        <mxCell id="igw" value="Internet Gateway" style="rounded=1;arcSize=18;whiteSpace=wrap;html=0;fillColor=#F4EEFF;strokeColor=#8C4FFF;strokeWidth=3;fontSize=16;fontStyle=1;fontColor=#5B2CC4;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="700" y="100" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Taula de rutes -->
+        <mxCell id="rt" value="Taula de rutes pública" style="rounded=1;arcSize=14;whiteSpace=wrap;html=0;fillColor=#FFFFFF;strokeColor=#8A9BA8;strokeWidth=2;fontSize=14;fontColor=#232F3E;align=left;verticalAlign=middle;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet A -->
+        <mxCell id="subnet_a" value="Subnet A · 10.0.32.0/25 · 2 EC2" style="rounded=1;arcSize=4;whiteSpace=wrap;html=0;fillColor=#F1F8EA;strokeColor=#7AA116;strokeWidth=2;align=left;verticalAlign=top;spacingTop=6;spacingLeft=14;fontSize=14;fontStyle=1;fontColor=#248814;" vertex="1" parent="1">
+          <mxGeometry x="150" y="250" width="500" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet B -->
+        <mxCell id="subnet_b" value="Subnet B · 10.0.30.0/23 · 2 EC2" style="rounded=1;arcSize=4;whiteSpace=wrap;html=0;fillColor=#F1F8EA;strokeColor=#7AA116;strokeWidth=2;align=left;verticalAlign=top;spacingTop=6;spacingLeft=14;fontSize=14;fontStyle=1;fontColor=#248814;" vertex="1" parent="1">
+          <mxGeometry x="150" y="480" width="500" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet C -->
+        <mxCell id="subnet_c" value="Subnet C · 10.0.33.0/28 · 2 EC2" style="rounded=1;arcSize=4;whiteSpace=wrap;html=0;fillColor=#F1F8EA;strokeColor=#7AA116;strokeWidth=2;align=left;verticalAlign=top;spacingTop=6;spacingLeft=14;fontSize=14;fontStyle=1;fontColor=#248814;" vertex="1" parent="1">
+          <mxGeometry x="150" y="710" width="500" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- EC2 cards -->
+        <!-- Subnet A EC2 1 -->
+        <mxCell id="ec2_a1" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a1_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a1_name" value="web-subnet-a-1" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="210" y="330" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a1_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="210" y="370" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet A EC2 2 -->
+        <mxCell id="ec2_a2" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a2_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a2_name" value="web-subnet-a-2" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="210" y="550" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_a2_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="210" y="590" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet B EC2 1 -->
+        <mxCell id="ec2_b1" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="280" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b1_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="780" y="280" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b1_name" value="web-subnet-b-1" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="790" y="330" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b1_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="790" y="370" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet B EC2 2 -->
+        <mxCell id="ec2_b2" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="500" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b2_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="780" y="500" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b2_name" value="web-subnet-b-2" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="790" y="550" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_b2_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="790" y="590" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet C EC2 1 -->
+        <mxCell id="ec2_c1" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="280" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c1_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="280" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c1_name" value="web-subnet-c-1" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="330" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c1_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="370" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Subnet C EC2 2 -->
+        <mxCell id="ec2_c2" value="" style="rounded=1;arcSize=9;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DBDB;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="500" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c2_header" value="" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FF9900;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="500" width="360" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c2_name" value="web-subnet-c-2" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=1;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="550" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2_c2_details" value="AZ: us-east-1a · IP pública: assignada · Port 80 obert" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="590" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Fletxes VPC -> Subnets -->
+        <mxCell id="edge-vpc-sa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="230" as="sourcePoint" />
+            <mxPoint x="350" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-vpc-sb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="460" as="sourcePoint" />
+            <mxPoint x="350" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-vpc-sc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="625" y="690" as="sourcePoint" />
+            <mxPoint x="350" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fletxes IGW -> Taula de rutes -->
+        <mxCell id="edge-igw-rt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="170" as="sourcePoint" />
+            <mxPoint x="900" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="900" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Fletxes Taula de rutes -> Subnets -->
+        <mxCell id="edge-rt-sa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="260" as="sourcePoint" />
+            <mxPoint x="350" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="350" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-rt-sb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="260" as="sourcePoint" />
+            <mxPoint x="350" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="350" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-rt-sc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#5A6B7B;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="260" as="sourcePoint" />
+            <mxPoint x="350" y="720" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="350" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Llegenda -->
+        <mxCell id="legend" value="Verdes = Subxarxes públiques · Port 80 obert · HTTP" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#5A6B7B;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1050" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_green" value="" style="rounded=0;fillColor=#F1F8EA;strokeColor=#7AA116;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="1048" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_green_label" value="Subxarxa" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#5A6B7B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1042" width="80" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_orange" value="" style="rounded=0;fillColor=#FFFFFF;strokeColor=#FF9900;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1048" width="14" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_orange_label" value="EC2" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#5A6B7B;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1042" width="40" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_text" value="AZ: us-east-1a per totes les subxarxes" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#5A6B7B;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1048" width="250" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

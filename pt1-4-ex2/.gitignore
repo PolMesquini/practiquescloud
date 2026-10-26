@@ -1,0 +1,17 @@
+# Terraform: estat local i fitxers generats
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Claus i secrets
+*.pem
+*.key
+
+# Sistema operatiu / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
