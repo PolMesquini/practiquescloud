@@ -129,6 +129,33 @@ web_instances = {
    instàncies amb l'etiqueta `Name` corresponent (`pt1-4-ex1-web-1` i
    `pt1-4-ex1-web-2`).
 
+## Resultat del desplegament
+
+Desplegament realitzat el **26 d'octubre de 2026** a `us-east-1`:
+
+| Recurs | Identificador / valor |
+|---|---|
+| AMI | `ami-04b938437b69a2c9c` (`al2023-ami-2023.12.20261026.1-kernel-6.18-x86_64`) |
+| VPC | `vpc-0e81e59a9a9820be7` |
+| Subxarxa pública 1 | `subnet-06cf412b0eca9c922` · `us-east-1a` |
+| Subxarxa pública 2 | `subnet-048c40f2a5e30a614` · `us-east-1b` |
+| Security Group | `sg-0d42cfe6df0a2fb58` |
+
+| Instància | ID | Zona | IP pública | URL |
+|---|---|---|---|---|
+| `web-1` | `i-0f1d38d269417d148` | `us-east-1a` | `3.83.223.157` | <http://3.83.223.157/> |
+| `web-2` | `i-0b249d595cdde114d` | `us-east-1b` | `3.80.99.119` | <http://3.80.99.119/> |
+
+Comprovació HTTP:
+
+```text
+web-1: HTTP 200 · Hola des de ip-10-0-1-81.ec2.internal
+web-2: HTTP 200 · Hola des de ip-10-0-2-54.ec2.internal
+```
+
+> Les IPs públiques són dinàmiques: si es destrueix i es torna a desplegar la
+> infraestructura, canviaran.
+
 ## Neteja dels recursos
 
 Per evitar costos, elimina tots els recursos quan acabis la pràctica:
