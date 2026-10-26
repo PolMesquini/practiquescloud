@@ -16,6 +16,9 @@ Les instàncies executen Apache HTTP Server i mostren una pàgina web que
 identifica la instància, de manera que es pot comprovar fàcilment que el
 desplegament ha funcionat.
 
+<img width="1920" height="703" alt="{5CF80E81-5A19-4615-8AC1-448FD3B24EE2}" src="https://github.com/user-attachments/assets/7eb0f1b1-10d4-4a46-8244-3328272c3e37" />
+
+
 ## Topologia de xarxa
 
 ![Topologia de la xarxa](assets/topologia.png)
