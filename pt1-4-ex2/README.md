@@ -10,11 +10,7 @@ mitjançant Terraform.
 
 ### Topologia
 
-![Topologia de la xarxa](assets/topologia.png)
-
-El diagrama s'ha dissenyat amb **draw.io** i les formes oficials d'AWS. El fitxer editable és
-[`assets/topologia.drawio`](assets/topologia.drawio) i la imatge exportada és
-[`assets/topologia.png`](assets/topologia.png).
+<img width="1123" height="631" alt="{F0C2A248-30EC-437B-854A-DB95476A4977}" src="https://github.com/user-attachments/assets/a829acb8-3a83-496e-a9d2-511c18179053" />
 
 ### Components
 
