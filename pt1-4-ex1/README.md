@@ -23,7 +23,7 @@ desplegament ha funcionat.
 
 ![Topologia de la xarxa](assets/topologia.png)
 
-> El diagrama s'ha dissenyat amb draw.io. El fitxer editable és
+> El diagrama s'ha dissenyat amb draw.io i les formes oficials d'AWS. El fitxer editable és
 > [`assets/topologia.drawio`](assets/topologia.drawio) i la imatge exportada és
 > [`assets/topologia.png`](assets/topologia.png).
 
