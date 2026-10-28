@@ -23,11 +23,6 @@ desplegament ha funcionat.
 
 <img width="1536" height="844" alt="{4ADA178F-DFFF-489F-A858-20827AE6E055}" src="https://github.com/user-attachments/assets/b8c74695-5faa-4250-ba6d-c30fe78afaf0" />
 
-
-> El diagrama s'ha dissenyat amb draw.io i les formes oficials d'AWS. El fitxer editable és
-> [`assets/topologia.drawio`](assets/topologia.drawio) i la imatge exportada és
-> [`assets/topologia.png`](assets/topologia.png).
-
 ### Elements de la topologia
 
 | Element | Configuració | Funció |
