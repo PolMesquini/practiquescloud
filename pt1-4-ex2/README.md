@@ -164,6 +164,33 @@ instances = {
 A la consola d'AWS, a **EC2 → Instances**, hi han d'aparèixer les sis
 instàncies amb l'etiqueta `Name` corresponent.
 
+### Resultat del desplegament
+
+Desplegament realitzat a `us-east-1` el **28 d'octubre de 2026**:
+
+| Recurs | Identificador |
+|---|---|
+| VPC | `vpc-0412df319326ec023` |
+| Subnet A | `subnet-0d044f6c63b7bdcba` |
+| Subnet B | `subnet-0a94717497c696753` |
+| Subnet C | `subnet-09726e7fc5d5ebba5` |
+| Internet Gateway | `igw-01f73e3081ac36673` |
+| Taula de rutes | `rtb-0ea03398e88335f91` |
+| Security Group | `sg-0e540d6764d44a4d8` |
+| AMI | `ami-04b938437b69a2c9c` (`al2023-ami-2023.12.20261026.1-kernel-6.18-x86_64`) |
+
+| Instància | ID | Subxarxa | IP privada | IP pública |
+|---|---|---|---|---|
+| `subnet-a-1` | `i-035d023b4cdcc7589` | Subnet A | `10.0.32.99` | `13.222.218.11` |
+| `subnet-a-2` | `i-071bd7bd3d34503d8` | Subnet A | `10.0.32.25` | `44.203.251.185` |
+| `subnet-b-1` | `i-0be8dc2c1fa8b8737` | Subnet B | `10.0.30.99` | `54.145.161.159` |
+| `subnet-b-2` | `i-00b5d0dbd52b2a3bd` | Subnet B | `10.0.30.226` | `3.92.224.127` |
+| `subnet-c-1` | `i-09b7c8ffa45606552` | Subnet C | `10.0.33.5` | `44.202.73.65` |
+| `subnet-c-2` | `i-083f68c155953cc22` | Subnet C | `10.0.33.8` | `52.90.41.38` |
+
+> Les sis instàncies estan a `us-east-1a`. Les IPs públiques són dinàmiques:
+> si es destrueix i es torna a desplegar la infraestructura, canviaran.
+
 ### Neteja dels recursos
 
 Per evitar costos, eliminar tots els recursos quan s'acabi la pràctica:
