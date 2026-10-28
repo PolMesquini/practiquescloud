@@ -59,12 +59,14 @@ Procediment seguit des del panell de control d'AWS:
 ### Captures de pantalla
 
 #### VPC i subxarxes
+<img width="1677" height="702" alt="{BA18E7AE-5EE5-429A-BC85-F769BF5D764B}" src="https://github.com/user-attachments/assets/c14b010a-02de-4bb5-8ecb-77ca698645ab" />
 
 ![VPC i subxarxes](assets/vpc_subnets.png)
 
 #### Instàncies EC2
 
 ![Instàncies EC2](assets/ec2_instances.png)
+<img width="1145" height="324" alt="{759C49E6-A6EC-4917-86FF-51A323FB5ADD}" src="https://github.com/user-attachments/assets/b6d08b04-835b-43fc-881d-e22a9ed65332" />
 
 > Un cop fetes les captures, les instàncies creades manualment es van eliminar
 > per evitar costos. El desplegament automatitzat de la Part C torna a crear
