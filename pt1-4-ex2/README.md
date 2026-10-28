@@ -1,71 +1,78 @@
-# Exercici 2 — Disseny i Desplegament de VPC, Subxarxes i EC2
+# Exercici 2 — Disseny i desplegament de VPC, subxarxes i EC2
 
 ## Objectiu
 
-Comprendre la segmentació de xarxes a AWS (VPC i Subnets) i comparar el desplegament manual (interfície gràfica d'AWS) amb el desplegament automatitzat mitjançant Terraform.
+Entendre la segmentació de xarxes a AWS (VPC i subxarxes) i comparar el
+desplegament manual des de la consola d'AWS amb el desplegament automatitzat
+mitjançant Terraform.
 
-## Part A: Disseny de Xarxa
+## Part A — Disseny de la xarxa
 
-### TopologiaDemana
+### Topologia
+
+![Topologia de la xarxa](assets/topologia.png)
+
+El diagrama s'ha dissenyat amb **draw.io**. El fitxer editable és
+[`assets/topologia.drawio`](assets/topologia.drawio) i la imatge exportada és
+[`assets/topologia.png`](assets/topologia.png).
+
+### Components
 
 | Element | Configuració |
 |---|---|
-| **VPC** | `10.0.0.0/16` (personalitzada) |
-| **Zona d'Disponibilitat** | `us-east-1a` (totes les subxarxes) |
-| **Subnet A** | `10.0.32.0/25` · 2 instàncies EC2 |
-| **Subnet B** | `10.0.30.0/23` · 2 instàncies EC2 |
-| **Subnet C** | `10.0.33.0/28` · 2 instàncies EC2 |
-| **Total instàncies** | 6 (t3.micro, Amazon Linux 2023) |
+| Regió | `us-east-1` |
+| VPC | `10.0.0.0/16` |
+| Zona de disponibilitat | `us-east-1a` (les tres subxarxes) |
+| Subnet A | `10.0.32.0/25` · 2 instàncies EC2 |
+| Subnet B | `10.0.30.0/23` · 2 instàncies EC2 |
+| Subnet C | `10.0.33.0/28` · 2 instàncies EC2 |
+| Instàncies | 6 en total |
+| Tipus d'instància | `t3.micro` |
+| Sistema operatiu | Amazon Linux 2023 |
 
-### Distribució de CIDR
+### Planificació d'adreces
 
-- VPC: `10.0.0.0/16` → 65.536 direccions IP
-- Subnet A (`10.0.32.0/25`) → 128 direccions (10.0.32.0 - 10.0.32.127)
-- Subnet B (`10.0.30.0/23`) → 512 direccions (10.0.30.0 - 10.0.31.255)
-- Subnet C (`10.0.33.0/28`) → 16 direccions (10.0.33.0 - 10.0.33.15)
+| Subxarxa | CIDR | Rang | Adreces | Utilitzables |
+|---|---|---|---|---|
+| Subnet A | `10.0.32.0/25` | `10.0.32.0` – `10.0.32.127` | 128 | 123 |
+| Subnet B | `10.0.30.0/23` | `10.0.30.0` – `10.0.31.255` | 512 | 507 |
+| Subnet C | `10.0.33.0/28` | `10.0.33.0` – `10.0.33.15` | 16 | 11 |
 
-_Totes les subxarxes estan no superposibles i caben dins la VPC._
+Els rangs no se superposen i tots tres queden dins de la VPC `10.0.0.0/16`.
+AWS reserva cinc adreces per subxarxa (xarxa, router, DNS, reservada i
+broadcast), per això el nombre d'adreces utilitzables és inferior al total.
 
-## Part B: Desplegament per Consola d'AWS (GUI)
+## Part B — Desplegament manual per consola
 
-Desplegament manual des del panell de control d'AWS:
+Procediment seguit des del panell de control d'AWS:
 
-1. **Crear VPC**: `10.0.0.0/16`, amb nom `vpc-pt1-4-ex2`
-2. **Crear Internet Gateway**: `igw-pt1-4-ex2`, adjuntar a la VPC
-3. **Crear taula de rutes**: `0.0.0.0/0 → IGW`
-4. **Crear 3 subxarxes** a `us-east-1a`:
+1. **Crear la VPC** `pt1-4-ex2` amb el rang `10.0.0.0/16`.
+2. **Crear les tres subxarxes** a `us-east-1a`:
    - `subnet-a`: `10.0.32.0/25`
    - `subnet-b`: `10.0.30.0/23`
    - `subnet-c`: `10.0.33.0/28`
-5. **Associar taula de rutes** a les tres subxarxes
-6. **Crear Security Group**: HTTP 80 des d'Internet
-7. **Desplegar 6 instàncies EC2** (2 per subnét):
-   - Tipus: `t3.micro`
-   - SO: Amazon Linux 2023
-   - IP pública assignada automàticament
-   - Apache HTTP Server instal·lat
+3. **Llançar sis instàncies EC2** `t3.micro` amb Amazon Linux 2023, dues a
+   cadascuna de les subxarxes.
+4. **Capturar** la VPC, les subxarxes i el llistat de les sis instàncies en
+   execució.
 
-### Captures de pantalla (Part B)
+### Captures de pantalla
 
-> Les següents captures es van prendre després del desplegament manual:
+#### VPC i subxarxes
 
-- **VPC**: `pt1-4-ex2` amb les seves propietats
-- **Subxarxes**: Les 3 subxarxes creades a `us-east-1a` amb les seves CIDRs
-- **Instàncies EC2**: 6 instàncies en execució, etiquetades amb els noms corresponents
+![VPC i subxarxes](assets/vpc_subnets.png)
 
-*(Les captures de pantalla es podrien afegir aquí al rapport final)*
+#### Instàncies EC2
 
-## Part C: Desplegament amb Terraform (IaC)
+![Instàncies EC2](assets/ec2_instances.png)
 
-### Codifont
+> Un cop fetes les captures, les instàncies creades manualment es van eliminar
+> per evitar costos. El desplegament automatitzat de la Part C torna a crear
+> la mateixa infraestructura.
 
-El codi de Terraform està a la carpeta `pt1-4-ex2/`:
+## Part C — Desplegament amb Terraform
 
-- `main.tf` — Recursos complets (VPC, subxarxes, IGW, SG, 6 EC2)
-- `.gitignore` — Exclusions locals
-- `.terraform.lock.hcl` — Bloque de proveïdors
-
-### Estructura de carpetes
+### Estructura del projecte
 
 ```text
 practiquescloud/
@@ -76,87 +83,105 @@ practiquescloud/
     │   ├── vpc_subnets.png
     │   └── ec2_instances.png
     ├── main.tf
-    ├── README.md
-    └── .gitignore
+    ├── variables.tf
+    ├── outputs.tf
+    └── README.md
 ```
 
-### Desplegament amb Terraform
+### Requisits
+
+- [Terraform](https://developer.hashicorp.com/terraform/install) `>= 1.6.0`
+- Un compte d'AWS amb permisos per crear VPC, subxarxes, Internet Gateway,
+  Security Groups i instàncies EC2
+- Credencials d'AWS configurades (per exemple, amb `aws configure` o les
+  variables `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` i `AWS_REGION`)
+
+### Recursos que crea el codi
+
+| Recurs | Nom | Configuració |
+|---|---|---|
+| VPC | `pt1-4-ex2-vpc` | `10.0.0.0/16` |
+| Subnet A | `pt1-4-ex2-subnet-a` | `10.0.32.0/25` · `us-east-1a` |
+| Subnet B | `pt1-4-ex2-subnet-b` | `10.0.30.0/23` · `us-east-1a` |
+| Subnet C | `pt1-4-ex2-subnet-c` | `10.0.33.0/28` · `us-east-1a` |
+| Internet Gateway | `pt1-4-ex2-igw` | Associat a la VPC |
+| Taula de rutes | `pt1-4-ex2-public-rt` | `0.0.0.0/0 → Internet Gateway` |
+| Security Group | `pt1-4-ex2-ec2-sg` | Només trànsit de sortida |
+| Instàncies EC2 | `pt1-4-ex2-subnet-a-1` … `pt1-4-ex2-subnet-c-2` | 6 × `t3.micro` · Amazon Linux 2023 |
+
+Cada instància s'associa a la subxarxa corresponent mitjançant l'atribut
+`subnet_id`. Les tres subxarxes comparteixen la mateixa zona de disponibilitat
+(`us-east-1a`) tal com demana l'enunciat.
+
+### Desplegament
 
 Des de la carpeta `pt1-4-ex2`:
 
 ```bash
-# 1. Inicialitza el projecte
+# 1. Inicialitzar el projecte i descarregar el provider d'AWS
 terraform init
 
-# 2. Formatea i valida la configuració
+# 2. Comprovar el format i validar la configuració
 terraform fmt -check
 terraform validate
 
-# 3. Revisa el pla
+# 3. Revisar el pla
 terraform plan -out=tfplan
 
-# 4. Aplica el pla
+# 4. Aplicar el pla
 terraform apply tfplan
 ```
-
-### Resultat del desplegament
-
-El codi Terraform ha estat validat i està preparat per a ser desplegat. Un cop s'hagin destruït les ressources de l'Exercici 1, des de la carpeta `pt1-4-ex2`:
-
-```bash
-terraform init
-terraform plan -out=tfplan
-terraform apply tfplan
-```
-
-Es desplgaran les següents ressources:
-
-- VPC: `10.0.0.0/16` amb nom `vpc-pt1-4-ex2`
-- 3 subxarxes a `us-east-1a`:
-  - Subnet A: `10.0.32.0/25`
-  - Subnet B: `10.0.30.0/23`
-  - Subnet C: `10.0.33.0/28`
-- Internet Gateway: `igw-pt1-4-ex2`
-- Security Group: `web-pt1-4-ex2` (HTTP 80 des d'Internet)
-- 6 instàncies EC2 `t3.micro` amb Amazon Linux 2023 (2 per subnét)
-
-Després de l'aplica, es podran verificar les 6 instàncies accedint a les seves URLs públiques amb HTTP.
 
 ### Verificació
 
-1. Obre les URLs al navegador. Cada pàgina mostra el hostname i el subtnet d'origen.
-2. Comprova l'estat de les instàncies:
+Consultar els identificadors i les IPs de les instàncies:
 
-   ```bash
-   terraform state show 'aws_instance.web-subnet-a-1'
-   terraform state show 'aws_instance.web-subnet-b-1'
-   terraform state show 'aws_instance.web-subnet-c-1'
-   ```
+```bash
+terraform output
+terraform output instances
+```
 
-3. A la consola d'AWS, a **EC2 → Instances**, han d'aparèixer les 6 instàncies amb les etiquetes corresponents.
+L'output `instances` té aquesta forma (els valors són dinàmics i es coneixen
+després d'aplicar el pla):
+
+```text
+instances = {
+  "subnet-a-1" = {
+    availability_zone = "us-east-1a"
+    id                = "<id-instancia>"
+    private_ip        = "<ip-privada>"
+    public_ip         = "<ip-publica>"
+    subnet_id         = "<id-subnet-a>"
+  }
+  "subnet-a-2" = { ... }
+  "subnet-b-1" = { ... }
+  "subnet-b-2" = { ... }
+  "subnet-c-1" = { ... }
+  "subnet-c-2" = { ... }
+}
+```
+
+A la consola d'AWS, a **EC2 → Instances**, hi han d'aparèixer les sis
+instàncies amb l'etiqueta `Name` corresponent.
 
 ### Neteja dels recursos
 
-Per evitar costos, elimina tots els recursos quan acabis la pràctica:
+Per evitar costos, eliminar tots els recursos quan s'acabi la pràctica:
 
 ```bash
 terraform destroy
 ```
 
-## Decisions de disseny
+## Comparació: consola vs. Terraform
 
-- **3 subxarxes una sola AZ**: Per Prat adequat a l'exercici, totes les subxarxes compartin `us-east-1a`. Això facilita la gestió, però en un entorn de producció s'utilitzarien múltiples AZs per alta disponibilitat.
-- **CIDR planning**: Els CIDRs estan pensats per no superposar-se i ser fàcils d'identificar (`10.0.32.0/25`, `10.0.30.0/23`, `10.0.33.0/28`).
-- **6 instàncies t3.micro**: Entra en el nivell gratuït d'AWS (per algunes configuracions), però 6 instàncies poden suposar un cost lleuger. Recorda destruir-les després.
-- **IMDSv2 obligatori**: El servei de metadades només accepta tokens IMDSv2 per pràctica de seguretat.
-- **HTTP solament**: El Security Group obre només el port 80. No s'obertura SSH directe per aquest exercici.
-- **AMI dinàmica**: No es fixa un AMI ID, sinó que es consulta la versió més recent d'Amazon Linux 2023.
-
-## Costos
-
-- Les instàncies `t3.micro` poden entrar al nivell gratuït, però 6 instàncies simultànies poden superar el límit.
-- VPC, subxarxes, Internet Gateway i Security Group no tenen cost directe.
-- **Destrueix amb `terraform destroy`** quan acabis la pràctica.
+| Aspecte | Consola d'AWS | Terraform |
+|---|---|---|
+| Creació | Manual, pas a pas | Descriptiva, amb codi |
+| Reproduïbilitat | Depèn dels passos recordats | El mateix codi crea el mateix resultat |
+| Revisió prèvia | No hi ha pla | `terraform plan` mostra els canvis |
+| Correcció d'errors | Es descobreixen en crear | `terraform validate` i el pla |
+| Eliminació | Manual, recurs a recurs | `terraform destroy` |
+| Documentació | Captures i notes | El propi codi versionat a Git |
 
 ## Autor
 
