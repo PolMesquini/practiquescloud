@@ -81,9 +81,7 @@ practiquescloud/
 └── pt1-4-ex2/
     ├── assets/
     │   ├── topologia.drawio
-    │   ├── topologia.png
-    │   ├── vpc_subnets.png
-    │   └── ec2_instances.png
+    │   └── topologia.png
     ├── main.tf
     ├── variables.tf
     ├── outputs.tf
