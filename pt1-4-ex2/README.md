@@ -59,13 +59,14 @@ Procediment seguit des del panell de control d'AWS:
 ### Captures de pantalla
 
 #### VPC i subxarxes
-<img width="1677" height="702" alt="{BA18E7AE-5EE5-429A-BC85-F769BF5D764B}" src="https://github.com/user-attachments/assets/c14b010a-02de-4bb5-8ecb-77ca698645ab" />
+<img width="1140" height="331" alt="{44E7DD1E-929E-48B0-8ADD-355E90721FF0}" src="https://github.com/user-attachments/assets/e1b9ea0a-37be-48d0-b000-14f3ceb82936" />
+
 
 
 
 #### Instàncies EC2
 
-<img width="1145" height="324" alt="{759C49E6-A6EC-4917-86FF-51A323FB5ADD}" src="https://github.com/user-attachments/assets/b6d08b04-835b-43fc-881d-e22a9ed65332" />
+<img width="1022" height="482" alt="{B28B8C7E-3FAF-4B11-9931-0F9FFE392343}" src="https://github.com/user-attachments/assets/b08dbf15-e3c4-4f3e-af5e-ac4106c56b45" />
 
 > Un cop fetes les captures, les instàncies creades manualment es van eliminar
 > per evitar costos. El desplegament automatitzat de la Part C torna a crear
@@ -192,6 +193,15 @@ Desplegament realitzat a `us-east-1` el **28 d'octubre de 2026**:
 > Les sis instàncies estan a `us-east-1a`. Les IPs públiques són dinàmiques:
 > si es destrueix i es torna a desplegar la infraestructura, canviaran.
 
+#### VPC i subxarxes
+<img width="1677" height="702" alt="{BA18E7AE-5EE5-429A-BC85-F769BF5D764B}" src="https://github.com/user-attachments/assets/c14b010a-02de-4bb5-8ecb-77ca698645ab" />
+
+
+
+#### Instàncies EC2
+
+<img width="1145" height="324" alt="{759C49E6-A6EC-4917-86FF-51A323FB5ADD}" src="https://github.com/user-attachments/assets/b6d08b04-835b-43fc-881d-e22a9ed65332" />
+
 ### Neteja dels recursos
 
 Per evitar costos, eliminar tots els recursos quan s'acabi la pràctica:
@@ -210,6 +220,11 @@ terraform destroy
 | Correcció d'errors | Es descobreixen en crear | `terraform validate` i el pla |
 | Eliminació | Manual, recurs a recurs | `terraform destroy` |
 | Documentació | Captures i notes | El propi codi versionat a Git |
+
+
+<img width="1034" height="623" alt="{F6CAE4EF-67EF-4AA3-A63E-0453878EB5C0}" src="https://github.com/user-attachments/assets/f66d41d4-1a4d-4eaa-a909-61390ba37226" />
+<img width="1360" height="262" alt="{E9FFF95C-7F68-4820-92D2-22F161416360}" src="https://github.com/user-attachments/assets/e979ea63-c85c-4110-96c0-0071d4b0e62a" />
+
 
 ## Autor
 
