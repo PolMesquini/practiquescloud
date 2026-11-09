@@ -20,7 +20,8 @@ practiquescloud/
 
 ## Topologia
 
-![Topologia de la infraestructura](assets/topologia.png)
+<img width="1083" height="551" alt="{7C593461-6576-4E69-A8FC-D81160340D03}" src="https://github.com/user-attachments/assets/90955775-d218-47b9-bf19-e996675f81b8" />
+
 
 ## Requisits
 
