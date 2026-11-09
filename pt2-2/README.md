@@ -96,10 +96,3 @@ Resultat real del desplegament a `us-east-1`:
 Les dues instàncies estan en execució, cadascuna en una subxarxa diferent, amb
 la clau `vockey` i les etiquetes `ec2-a` i `ec2-b`.
 
-## Neteja dels recursos
-
-Per evitar costos quan s'acabi la pràctica:
-
-```bash
-terraform destroy
-```
