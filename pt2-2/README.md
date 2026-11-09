@@ -105,7 +105,6 @@ Resultat real del desplegament a `us-east-1`:
 <img width="939" height="113" alt="{EBB79D4B-770D-4395-83E0-E32A82C702FC}" src="https://github.com/user-attachments/assets/0c723a65-5d22-4c0c-9271-fb732072938e" />
 
 ## 
-## 
      
 
 | Recurs | Identificador | Detalls |
