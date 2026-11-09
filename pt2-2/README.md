@@ -81,7 +81,17 @@ aws_vpc.vpc03
 
 Resultat real del desplegament a `us-east-1`:
 
-![Recursos desplegats](assets/recursos.png)
+<img width="940" height="180" alt="{ED16D1FE-DB03-4E2F-B01F-5061D049357D}" src="https://github.com/user-attachments/assets/42061320-c233-4588-b45f-fbd97763dcdf" />
+
+<img width="637" height="126" alt="{0B21ABD0-2BB9-464E-B9AC-71867221427D}" src="https://github.com/user-attachments/assets/63e9cd34-a877-43c0-856c-6d5a2f689b52" />
+
+<img width="1235" height="164" alt="{6AD2F308-A96B-448F-8CC1-121FE9C4997E}" src="https://github.com/user-attachments/assets/5bf440a3-9671-4fd2-9c23-d43063120f7e" />
+
+<img width="748" height="137" alt="{61159605-849F-457E-962C-4911308083A4}" src="https://github.com/user-attachments/assets/d39a65e2-7618-4e22-bd48-f120eaedfcbc" />
+
+<img width="575" height="140" alt="{773C2630-0671-4545-A6FD-5E1E50C7FCB9}" src="https://github.com/user-attachments/assets/81305092-86e9-41cc-8e38-aece849ebb71" />
+
+
 
 | Recurs | Identificador | Detalls |
 |---|---|---|
